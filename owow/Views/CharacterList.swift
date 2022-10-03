@@ -20,24 +20,27 @@ struct CharacterList: View {
                 ForEach(data.responses, id: \.page) { response in
                     
                     ForEach(Array(response.element.results.enumerated()), id: \.element.id) { character in
-                                                
-                        CharacterView(
-                            image: character.element.image,
-                            name: character.element.name,
-                            status: character.element.status,
-                            stats: character.element.status.stats(),
-                            species: character.element.species,
-                            spec: character.element.species.spec(),
-                            gender: character.element.gender,
-                            gndr: character.element.gender.gndr()
-                        )
-                        .onAppear {
-                            guard character.offset == response.element.results.count - 1,
-                                  let next = response.element.info.next,
-                                  let pageString = next.components(separatedBy: "?page=").last,
-                                  let nextPage = Int(pageString)
-                            else { return }
-                            data.loadPage(nextPage)
+                        
+                        NavigationLink(destination: DetailView(character: character.element)) {
+                            
+                            CharacterView(
+                                image: character.element.image,
+                                name: character.element.name,
+                                status: character.element.status,
+                                stats: character.element.status.stats(),
+                                species: character.element.species,
+                                spec: character.element.species.spec(),
+                                gender: character.element.gender,
+                                gndr: character.element.gender.gndr()
+                            )
+                            .onAppear {
+                                guard character.offset == response.element.results.count - 1,
+                                      let next = response.element.info.next,
+                                      let pageString = next.components(separatedBy: "?page=").last,
+                                      let nextPage = Int(pageString)
+                                else { return }
+                                data.loadPage(nextPage)
+                            }
                         }
                     }
                 }

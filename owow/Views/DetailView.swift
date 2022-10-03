@@ -9,14 +9,22 @@ import SwiftUI
 
 struct DetailView: View {
     
+    var character: Result
     
     var body: some View {
-        Text("")
-    }
-}
-
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView()
+        
+        VStack {
+            
+            Text(character.name)
+                .font(.title)
+                .bold()
+                .padding()
+        
+            Text("Location info:")
+                .padding()
+            
+            Text(character.location.name)
+                .padding()
+        }
     }
 }
