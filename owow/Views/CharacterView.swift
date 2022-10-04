@@ -40,7 +40,6 @@ struct CharacterView: View {
                         .fontWeight(.bold)
                     
                     // Tags
-                    // MARK: - Fix code duplicates
                     HStack {
                         Text(status)
                             .fontWeight(.bold)

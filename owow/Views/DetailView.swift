@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    
+        
     var character: Result
     
     var body: some View {
@@ -19,9 +19,22 @@ struct DetailView: View {
                 .font(.title)
                 .bold()
                 .padding()
+            
+            AsyncImage(url: URL(string: character.image)) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 150, height: 150)
+            .cornerRadius(5)
         
-            Text("Location info:")
-                .padding()
+
+            HStack {
+                Image(systemName: "location")
+                
+                Text("Location info:")
+            }
+            .padding()
             
             Text(character.location.name)
                 .padding()
