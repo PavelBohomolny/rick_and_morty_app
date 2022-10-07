@@ -13,32 +13,47 @@ struct DetailView: View {
     
     var body: some View {
         
-        ScrollView {
+        VStack {
             
-            VStack {
-                
-                AsyncImage(url: URL(string: character.image)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }
-                .scaledToFill()
-                
-                Text(character.name)
-                    .font(.title)
-                    .bold()
-                    .padding()
-                
-                HStack {
-                    Image(systemName: "location")
-                    
-                    Text("Location info:")
-                }
+            Text(character.name)
+                .font(.title)
+                .bold()
                 .padding()
-                
-                Text(character.location.name)
-                    .padding()
+            
+            AsyncImage(url: URL(string: character.image)) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
             }
+            .scaledToFill()
+
+            List {
+                HStack {
+                    Text("🟢")
+                    Text("Status")
+                    Spacer()
+                    Text(character.status)
+                }
+                HStack{
+                    Text("🧬")
+                    Text("Species")
+                    Spacer()
+                    Text(character.species)
+                }
+                HStack {
+                    Text("👤")
+                    Text("Gender")
+                    Spacer()
+                    Text(character.gender)
+                }
+                HStack {
+                    Text("📍")
+                    Text("Location")
+                    Spacer()
+                    Text(character.location.name)
+                }
+            }
+            .listStyle(InsetGroupedListStyle())
         }
     }
 }

@@ -91,8 +91,8 @@
 				FABA429628E6FBEE00AC0262 /* ContentView.swift */,
 				FABA42A828E7117B00AC0262 /* CharacterView.swift */,
 				FABA42AA28E711A200AC0262 /* CharacterList.swift */,
-				FABA42AE28E7131600AC0262 /* InfoView.swift */,
 				FABA42B328E7301700AC0262 /* DetailView.swift */,
+				FABA42AE28E7131600AC0262 /* InfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
