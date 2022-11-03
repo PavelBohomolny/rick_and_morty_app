@@ -41,30 +41,9 @@ struct CharacterView: View {
                     
                     // Tags
                     HStack {
-                        Text(status)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                            .padding(.leading, 5)
-                            .padding(.trailing, 5)
-                            .background(stats)
-                            .cornerRadius(3)
-                        
-                        Text(species)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                            .padding(.leading, 5)
-                            .padding(.trailing, 5)
-                            .background(spec)
-                            .cornerRadius(3)
-                            .lineLimit(1)
-                        
-                        Text(gender)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                            .padding(.leading, 5)
-                            .padding(.trailing, 5)
-                            .background(gndr)
-                            .cornerRadius(3)
+                        TagsInfo(title: status, backGr: stats)
+                        TagsInfo(title: species, backGr: spec)
+                        TagsInfo(title: gender, backGr: gndr)
                     }
                 }
             }
@@ -76,5 +55,20 @@ struct CharacterView: View {
 struct CharacterView_Previews: PreviewProvider {
     static var previews: some View {
         CharacterView(image: "", name: "", status: "", stats: Color.clear, species: "", spec: Color.clear, gender: "", gndr: Color.clear)
+    }
+}
+struct TagsInfo: View {
+    
+    var title: String
+    var backGr: Color
+    
+    var body: some View {
+        Text(title)
+            .fontWeight(.bold)
+            .foregroundColor(Color.white)
+            .padding(.leading, 5)
+            .padding(.trailing, 5)
+            .background(backGr)
+            .cornerRadius(3)
     }
 }

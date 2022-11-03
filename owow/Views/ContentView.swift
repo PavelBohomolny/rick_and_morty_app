@@ -10,32 +10,27 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var selection = 0
     @StateObject var data = RickandMortyDatas()
     
     var body: some View {
         
-        TabView(selection: $selection) {
+        TabView {
             CharacterList(data: data)
                 .tabItem {
-                    if selection == 0 {
+                    VStack {
                         Image(systemName: "house")
-                    } else {
-                        Image(systemName: "house.fill")
+                        Text("Home")
                     }
                 }
-                .tag(0)
-                        
+            
             InfoView()
                 .tabItem {
-                    if selection == 1 {
+                    VStack {
                         Image(systemName: "info.circle")
-                    } else {
-                        Image(systemName: "info.circle.fill")
+                        Text("Account")
+                        
                     }
                 }
-                .tag(1)
-            
         }
     }
 }
